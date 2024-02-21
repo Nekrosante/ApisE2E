@@ -1,0 +1,48 @@
+Realizado por:
+Luis Miguel Arcia Moreno
+
+CUCUMBER&GHERKIN
+@PetStoreUsers
+Feature:  Verify the operation of the pet store's services
+  As a regular user,
+  I want to use the services of the pet store,
+  To verify the operation of those related to user services.
+
+  Background:
+    Given that the services of the pet store are available
+
+    @CP001 @CreateUser
+    Scenario: Verify the creation of a user in the pet store
+      When submit the data of a valid user to the Create User method
+      Then validate the response from the user creation service
+
+    @CP002 @SearchUser
+    Scenario: Verify the user search method of the pet store
+      When execute the search method with a valid username
+      Then validate that the search is successful
+
+    @CP003 @UpdateUser
+    Scenario: Verify the method that updates user information in the pet store
+      When execute the user update method with valid data
+      Then validate the user update using the search method
+
+    @CP003 @DeleteUser
+    Scenario: Verify the deletion of a previously created user
+      When create a new user using the corresponding method
+      And delete the user from the pet store
+      Then verify with the search method that the user is deleted
+
+
+HALLAZGOS
+
+Error 01
+Título: El método login no valida la existencia del usuario
+Descripción: El método de login no realiza ninguna validación de username ni de password por lo que cualquier valor en estos atributos dentro del método arroja una respuesta 200 (Exitosa)
+
+Error 02
+Título: Error en la documentación de Swagger UI
+Descripción: Dentro de la documentación se hace explícito que es necesario hacer login antes de poder ejecutar los métodos Update User y Create User, sin embargo, el método Login no arroja ninguna credencial y los métodos anteriormente mencionados no requieren más que parámetros internos
+
+CONCLUSIONES:
+
+La validación de los métodos Rest de un servicio pueden escribirse como sentencias de fácil lectura que permiten reportes ligeros y fácil comprensión para el personal no técnico, sin embargo es necesario un desglose dentro de cada paso para evaluar el estado de cada acción dentro del proceso de ejecución, de igual manera la forma ideal de estas pruebas es validar los resultados frente a una BBDD por lo que se requiere permisos y cadenas de conexión a estas dentro del proyecto.

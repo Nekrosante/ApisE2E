@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Verify the creation of a user in the pet store</title>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff"><link rel="stylesheet" href="bootstrap-icons/bootstrap-icons.css">
+<!-- JQuery -->
+<script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script><!-- Required Stylesheets -->
+<link href="bootstrap-treeview/dist/bootstrap-treeview.min.css" rel="stylesheet">
+
+<!-- Required Javascript -->
+<script src="bootstrap-treeview/dist/bootstrap-treeview.min.js"></script><!-- DataTables -->
+<link type="text/css" href="datatables/1.13.1/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.13.1/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/1.13.1/time-elapsed-dhms.js"></script>
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+
+<script>
+    jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
+
+        var matches = data.match(/^(\d+(?:\.\d+)?)\s*([a-z]+)/i);
+        var multipliers = {
+            ms: 1,
+            s: 1000,
+            m: 60000,
+            h: 3600000,
+            d: 86400000
+        };
+
+        if (matches) {
+            var multiplier = multipliers[matches[2].toLowerCase()];
+            return parseFloat(matches[1]) * multiplier;
+        } else {
+            return -1;
+        };
+    };
+</script>
+<link rel="stylesheet" href="css/core.css"/>
+<link rel="stylesheet" href="css/link.css"/>
+<link type="text/css" media="screen" href="css/screen.css" rel="Stylesheet"/>
+<!--CHART.JS-->
+<script src="chartjs/chart.js"></script>
+<script src="chartjs/chartjs-plugin-datalabels@2.0.0"></script>
+<script src="chartjs/patternomaly.min.js"></script>
+<script>
+    // Register the plugin to all charts:
+    Chart.register(ChartDataLabels);
+</script>
+<!-- JQuery-UI -->
+<link type="text/css" href="jqueryui/1.11.2-start/jquery-ui.min.css" rel="Stylesheet" />
+<script type="text/javascript" src="jqueryui/1.11.2-start/jquery-ui.min.js"></script><!-- DataTables -->
+<link type="text/css" href="datatables/1.13.1/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.13.1/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/1.13.1/time-elapsed-dhms.js"></script>
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+
+<script>
+    jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
+
+        var matches = data.match(/^(\d+(?:\.\d+)?)\s*([a-z]+)/i);
+        var multipliers = {
+            ms: 1,
+            s: 1000,
+            m: 60000,
+            h: 3600000,
+            d: 86400000
+        };
+
+        if (matches) {
+            var multiplier = multipliers[matches[2].toLowerCase()];
+            return parseFloat(matches[1]) * multiplier;
+        } else {
+            return -1;
+        };
+    };
+</script>
+<!-- ImgPreview -->
+<script src="scripts/imgpreview.full.jquery.js" type="text/javascript"></script>
+</head>
+
+<body class="results-page">
+
+
+<div id="topheader">
+    <div id="topbanner">
+        <div id="logo"><a href="index.html"><img src="images/serenity-logo.png" border="0"/></a></div>
+        <div id="projectname-banner" style="float:right">
+            <span class="projectname">
+                <span class="projecttitle">Reto APIs Pet Store</span>
+                <span class="projectsubtitle"></span>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="middlecontent">
+    <div id="contenttop">
+        <div class="middlebg">
+        <span class="breadcrumbs">
+            <a href="index.html" class="breadcrumbs">Home</a>
+
+ <!-- inflection.of(breadcrumb.displayName).asATitle()-->
+            > <a href="03e1fdf848c72d95b5bed18c665686962a183c99b62d4b0366b8bfc913f51301.html">Verify the operation of the pet store's services</a>
+        > Verify the creation of a user in the pet store
+        </span>
+        </div>
+        <div class="rightbg"></div>
+    </div>
+
+    <div class="clr"></div>
+
+    <!--/* starts second table*/-->
+<div>
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#"><i class="bi bi-journal-check"></i> Overall Test Results</a>
+        </li>
+        <li >
+            <a href="capabilities.html"><i class="bi bi-journal-text"></i> Requirements</a>
+        </li>
+        <li >
+            <a href="576946480b52ad056d6f5bddf874399c83582ecf90963cc074a14c70580e7d9f.html"><i class="bi bi-chat-text"></i> Features</a>
+        </li>
+    </ul>
+    <span class="date-and-time"><a href="build-info.html"><i class="bi bi-info-circle"></i></a> Report generated 02-02-2024 00:59</span>
+    <br style="clear:left"/>
+</div>
+    <div class="clr"></div>
+
+
+    <div id="contentbody">
+        <div class="titlebar">
+            <div class="story-title">
+                <table class="outcome-header">
+                    <tr>
+                        <td>
+                                <div>
+                                    <h3 class="discreet-story-header">
+                                        <i class="fs-2 bi bi-chat-left-quote title-icon"></i>
+                                        <span class="story-header-title">Verify The Operation Of The Pet Store's Services </span>
+                                    </h3>
+
+                                </div>
+
+                        </td>
+                        <td valign="top">
+                            <p class="tag">
+                                    <span class="badge example-tag tag-badge" style="background:default;">
+                                    <i class="bi bi-tag-fill"></i>&nbsp;
+                                        <a class="tagLink" style="background:default;"
+                                           href="3e82d83fc52c5061cf70bf895af4c475609936b4e0c0675b64617f1e0f5d4810.html">Pet Store Users
+                                        </a>
+                                </span>
+                                    <span class="badge example-tag tag-badge" style="background:default;">
+                                    <i class="bi bi-tag-fill"></i>&nbsp;
+                                        <a class="tagLink" style="background:default;"
+                                           href="16c7de9488b4d0da3e539b2cc4d9546145c0d800be5ecf2f68a39d5ba1d93ee1.html">CP001
+                                        </a>
+                                </span>
+                                    <span class="badge example-tag tag-badge" style="background:default;">
+                                    <i class="bi bi-tag-fill"></i>&nbsp;
+                                        <a class="tagLink" style="background:default;"
+                                           href="f55cf301e8f51d63aebeb8bc8dbe880df940586e2a502c7a3e24c2b639523f8f.html">Windows
+                                        </a>
+                                </span>
+                                    <span class="badge example-tag tag-badge" style="background:default;">
+                                    <i class="bi bi-tag-fill"></i>&nbsp;
+                                        <a class="tagLink" style="background:default;"
+                                           href="d79b61245c4932654d2cbf184e02e13fded58e81c113bc8d667481ce56540fd1.html">Create User
+                                        </a>
+                                </span>
+                                    <span class='context-icon'><i class='bi bi-windows' title='Windows'></i></span>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="story-title">
+                <table class="outcome-header">
+                    <tr>
+                        <td colspan="2" class="test-title-bar">
+                            <span class="outcome-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon fa-2x' title='SUCCESS'></i></a></span>
+                            <span class="test-case-title">
+                                <span class="success-color">
+                                    Verify the creation of a user in the pet store
+                                        <span class="related-issue-title"></span>
+                                </span>
+                            </span>
+
+
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+
+            <!-- CAST MEMBERS -->
+            <div>&nbsp;</div>
+            <div>
+                <h3 class="discreet-story-header">
+                    <i class="fs-2 bi bi-people large-icon"></i>
+                    <span class="story-header-title">
+                        <a class="btn btn-primary" data-toggle="collapse" href="#castDetails"
+                           role="button" aria-expanded="true" aria-controls="castDetails">Cast</a>
+                    </span>
+                </h3>
+            </div>
+            <div class="collapse multi-collapse" id="castDetails">
+                <table class="cast">
+                    <tr>
+                            <td width="100%">
+                                <h4>
+                                    <i class="fs-2 bi bi-person"></i>&nbsp;
+                                    <span>
+                                        <a data-toggle="collapse" href="#abilities-Regular user"
+                                           aria-expanded="false" aria-controls="abilities">Regular user</a>
+                                        
+                                    </span>
+                                </h4>
+                                <div class="collapse multi-collapse" id="abilities-Regular user">
+                                        <div>
+                                            <span class="cast-description">Regular user can:</span>
+                                            <ul>
+                                                    <li>call an API at https://petstore.swagger.io/v2</li>
+                                            </ul>
+                                        </div>
+                                </div>
+                            </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        </td>
+        </tr>
+        </table>
+    </div>
+    <!-- END CAST MEMBERS -->
+
+
+</div>
+</div>
+
+<div class="clr"></div>
+
+
+<div id="beforetable"></div>
+
+
+<div id="tablecontents">
+    <div>
+        <table class="step-table">
+            <tr class="step-titles">
+                <th width="65">
+                </th>
+                <th class="step-description-column greentext">
+                    Steps
+                </th>
+
+                <th width="130" class="greentext">Outcome</th>
+                <th width="100" class="greentext"><i title="Duration" class="bi bi-stopwatch"></i></th>
+            </tr>
+            <tr class="step-table-separator">
+                <td colspan="5"></td>
+            </tr>
+
+                <tr class="test-SUCCESS">
+
+                    <td width="50" class="step-icon">
+                        <a name="0"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection0 success-icon"
+                                   style="margin-left: 20px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0')"
+                               style="display:block;">
+                                <span class="top-level-step">
+                                                Given that the services of the pet store are available
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="top-level-step">SUCCESS</span></td>
+                    <td width="100"><span class="top-level-step">3s 231ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection0" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="70" class="step-icon">
+                        <a name="0-0"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0-0')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection0-0 success-icon"
+                                   style="margin-left: 40px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0-0')"
+                               style="display:block;">
+                                <span class="nested-step">
+                                                Regular user executes a GET on the resource /swagger.json
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-step">2s 733ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection0-0" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="90" class="step-icon">
+                        <a name="0-0-0"></a>
+                            <span style="margin-left: 60px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                GET https://petstore.swagger.io/v2/swagger.json
+                                        </span>
+                            <span class="evidence">
+                                        <span class="piece-of-evidence">
+                <span>
+                        <button type="button" class="btn btn-success btn-sm" data-toggle="collapse"
+                                data-target="#restModal-REST-3">
+                            REST Query
+                        </button>
+                    </span>
+                <!-- Modal -->
+                <div class="rest-query-details">
+                    <div class="collapse multi-collapse" id="restModal-REST-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4>Response</h4>
+                                    <p>URL: https://petstore.swagger.io/v2/swagger.json</p>
+                                    <p>Status code: 200</p>
+                                    <p>Content Type: application/json</p>
+                                    <h4>Request Headers</h4>
+                                    <pre>Accept=*/*<br>Content-Type=application/json</pre>
+                                    <h4>Response Headers</h4>
+                                    <pre>Date: Fri, 02 Feb 2024 05:59:48 GMT<br>Content-Type: application/json<br>Transfer-Encoding: chunked<br>Connection: keep-alive<br>Access-Control-Allow-Origin: *<br>Access-Control-Allow-Methods: GET, POST, DELETE, PUT<br>Access-Control-Allow-Headers: Content-Type, api_key, Authorization<br>Server: Jetty(9.2.9.v20150224)</pre>
+                                <h4>Response Body</h4>
+                                    <pre>{<br>    &quot;swagger&quot;: &quot;2.0&quot;,<br>    &quot;info&quot;: {<br>        &quot;description&quot;: &quot;This is a sample server Petstore server.  You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).  For this sample, you can use the api key `special-key` to test the authorization filters.&quot;,<br>        &quot;version&quot;: &quot;1.0.6&quot;,<br>        &quot;title&quot;: &quot;Swagger Petstore&quot;,<br>        &quot;termsOfService&quot;: &quot;http://swagger.io/terms/&quot;,<br>        &quot;contact&quot;: {<br>            &quot;email&quot;: &quot;apiteam@swagger.io&quot;<br>        },<br>        &quot;license&quot;: {<br>            &quot;name&quot;: &quot;Apache 2.0&quot;,<br>            &quot;url&quot;: &quot;http://www.apache.org/licenses/LICENSE-2.0.html&quot;<br>        }<br>    },<br>    &quot;host&quot;: &quot;petstore.swagger.io&quot;,<br>    &quot;basePath&quot;: &quot;/v2&quot;,<br>    &quot;tags&quot;: [<br>        {<br>            &quot;name&quot;: &quot;pet&quot;,<br>            &quot;description&quot;: &quot;Everything about your Pets&quot;,<br>            &quot;externalDocs&quot;: {<br>                &quot;description&quot;: &quot;Find out more&quot;,<br>                &quot;url&quot;: &quot;http://swagger.io&quot;<br>            }<br>        },<br>        {<br>            &quot;name&quot;: &quot;store&quot;,<br>            &quot;description&quot;: &quot;Access to Petstore orders&quot;<br>        },<br>        {<br>            &quot;name&quot;: &quot;user&quot;,<br>            &quot;description&quot;: &quot;Operations about user&quot;,<br>            &quot;externalDocs&quot;: {<br>                &quot;description&quot;: &quot;Find out more about our store&quot;,<br>                &quot;url&quot;: &quot;http://swagger.io&quot;<br>            }<br>        }<br>    ],<br>    &quot;schemes&quot;: [<br>        &quot;https&quot;,<br>        &quot;http&quot;<br>    ],<br>    &quot;paths&quot;: {<br>        &quot;/pet/{petId}/uploadImage&quot;: {<br>            &quot;post&quot;: {<br>                &quot;tags&quot;: [<br>                    &quot;pet&quot;<br>                ],<br>                &quot;summary&quot;: &quot;uploads an image&quot;,<br>                &quot;description&quot;: &quot;&quot;,<br>                &quot;operationId&quot;: &quot;uploadFile&quot;,<br>                &quot;consumes&quot;: [<br>                    &quot;multipart/form-data&quot;<br>                ],<br>                &quot;produces&quot;: [<br>                    &quot;application/json&quot;<br>                ],<br>                &quot;parameters&quot;: [<br>                    {<br>                        &quot;name&quot;: &quot;petId&quot;,<br>                        &quot;in&quot;: &quot;path&quot;,<br>                        &quot;description&quot;: &quot;ID of pet to update&quot;,<br>                        &quot;required&quot;: true,<br>                        &quot;type&quot;: &quot;integer&quot;,<br>                        &quot;format&quot;: &quot;int64&quot;<br>                    },<br>                    {<br>                        &quot;name&quot;: &quot;additionalMetadata&quot;,<br>                        &quot;in&quot;: &quot;formData&quot;,<br>                        &quot;description&quot;: &quot;Additional data to pass to server&quot;,<br>                        &quot;required&quot;: false,<br>                        &quot;type&quot;: &quot;string&quot;<br>                    },<br>                    {<br>                        &quot;name&quot;: &quot;file&quot;,<br>                        &quot;in&quot;: &quot;formData&quot;,<br>                        &quot;description&quot;: &quot;file to upload&quot;,<br>                        &quot;required&quot;: false,<br>                        &quot;type&quot;: &quot;file&quot;<br>                    }<br>                ],<br>                &quot;responses&quot;: {<br>                    &quot;200&quot;: {<br>                        &quot;description&quot;: &quot;successful operation&quot;,<br>                        &quot;schema&quot;: {<br>                            &quot;$ref&quot;: &quot;#/definitions/ApiResponse&quot;<br>                        }<br>                    }<br>                },<br>                &quot;security&quot;: [<br>                    {<br>                        &quot;petstore_auth&quot;: [<br>                            &quot;write:pets&quot;,<br>                            &quot;read:pets&quot;<br>                        ]<br>                    }<br>                ]<br>            }<br>        },<br>        &quot;/pet&quot;: {<br>            &quot;post&quot;: {<br>                &quot;tags&quot;: [<br>                    &quot;pet&quot;<br>                ],<br>                &quot;summary&quot;: &quot;Add a new pet to the store&quot;,<br>                &quot;description&quot;: &quot;&quot;,<br>                &quot;operationId&quot;: &quot;addPet&quot;,<br>                &quot;consumes&quot;: [<br>                    &quot;application/json&quot;,<br>                    &quot;application/xml&quot;<br>                ],<br>                &quot;produces&quot;: [<br>                    &quot;application/json&quot;,<br>                    &quot;application/xml&quot;<br>                ],<br>                &quot;parameters&quot;: [<br>                    {<br>                        &quot;in&quot;: &quot;body&quot;,<br>                        &quot;name&quot;: &quot;body&quot;,<br>                        &quot;description&quot;: &quot;Pet object that needs to be added to the store&quot;,<br>                        &quot;required&quot;: true,<br>                        &quot;schema&quot;: {<br>                            &quot;$ref&quot;: &quot;#/definitions/Pet&quot;<br>                        }<br>                    }<br>                ],<br>                &quot;responses&quot;: {<br>                    &quot;405&quot;: {<br>                        &quot;description&quot;: &quot;Invalid input&quot;<br>                    }<br>                },<br>                &quot;security&quot;: [<br>                    {<br>                        &quot;petstore_auth&quot;: [<br>                            &quot;write:pets&quot;,<br>                            &quot;read:pets&quot;<br>                        ]<br>                    }<br>                ]<br>            },<br>            &quot;put&quot;: {<br>                &quot;tags&quot;: [<br>                    &quot;pet&quot;<br>                ],<br>                &quot;summary&quot;: &quot;Update an existing pet&quot;,<br>                &quot;description&quot;: &quot;&quot;,<br>                &quot;operationId&quot;: &quot;updatePet&quot;,<br>                &quot;consumes&quot;: [<br>                    &quot;application/json&quot;,<br>                    &quot;application/xml&quot;<br>                ],<br>                &quot;produces&quot;: [<br>                    &quot;application/json&quot;,<br>                    &quot;application/xml&quot;<br>                ],<br>                &quot;parameters&quot;: [<br>                    {<br>                        &quot;in&quot;: &quot;body&quot;,<br>                        &quot;name&quot;: &quot;body&quot;,<br>                        &quot;description&quot;: &quot;Pet object that needs to be added to the store&quot;,<br>                        &quot;required&quot;: true,<br>                        &quot;schema&quot;: {<br>                            &quot;$ref&quot;: &quot;#/definitions/Pet&quot;<br>                        }<br>                    }<br>                ],<br>                &quot;responses&quot;: {<br>                    &quot;400&quot;: {<br>                        &quot;description&quot;: &quot;Invalid ID supplied&quot;<br>                    },<br>                    &quot;404&quot;: {<br>                        &quot;description&quot;: &quot;Pet not found&quot;<br>                    },<br>                    &quot;405&quot;: {<br>                        &quot;description&quot;: &quot;Validation exception&quot;<br>                    }<br>                },<br>                &quot;security&quot;: [<br>                    {<br>                        &quot;petstore_auth&quot;: [<br>                            &quot;write:pets&quot;,<br>                            &quot;read:pets&quot;<br>                        ]<br>                    }<br>                ]<br>            }<br>        },<br>        &quot;/pet/findByStatus&quot;: {<br>            &quot;get&quot;: {<br>                &quot;tags&quot;: [<br>                    &quot;pet&quot;<br>                ],<br>                &quot;summary&quot;: &quot;Finds Pets by status&quot;,<br>                &quot;description&quot;: &quot;Multiple status values can be provided with comma separated strings&quot;,<br>                &quot;operationId&quot;: &quot;findPetsByStatus&quot;,<br>                &quot;produces&quot;: [<br>                    &quot;application/json&quot;,<br>                    &quot;application/xml&quot;<br>                ],<br>                &quot;parameters&quot;: [<br>                    {<br>                        &quot;name&quot;: &quot;status&quot;,<br>                        &quot;in&quot;: &quot;query&quot;,<br>                        &quot;description&quot;: &quot;Status values that need to be considered for filter&quot;,<br>                        &quot;required&quot;: true,<br>                        &quot;type&quot;: &quot;array&quot;,<br>                        &quot;items&quot;: {<br>                            &quot;type&quot;: &quot;string&quot;,<br>                            &quot;enum&quot;: [<br>                                &quot;available&quot;,<br>                                &quot;pending&quot;,<br>                                &quot;sold&quot;<br>                            ],<br>                            &quot;default&quot;: &quot;available&quot;<br>                        },<br>                        &quot;collectionFormat&quot;: &quot;multi&quot;<br>                    }<br>                ],<br>                &quot;responses&quot;: {<br>                    &quot;200&quot;: {<br>                        &quot;description&quot;: &quot;successful operation&quot;,<br>                        &quot;schema&quot;: {<br>                            &quot;type&quot;: &quot;array&quot;,<br>                            &quot;items&quot;: {<br>                                &quot;$ref&quot;: &quot;#/definitions/Pet&quot;<br>                            }<br>                        }<br>                    },<br>                    &quot;400&quot;: {<br>                        &quot;description&quot;: &quot;Invalid status value&quot;<br>                    }<br>                },<br>                &quot;security&quot;: [<br>                    {<br>                        &quot;petstore_auth&quot;: [<br>                            &quot;write:pets&quot;,<br>                            &quot;read:pets&quot;<br>                        ]<br>                    }<br>                ]<br>            }<br>        },<br>        &quot;/pet/findByTags&quot;: {<br>            &quot;get&quot;: {<br>                &quot;tags&quot;: [<br>                    &quot;pet&quot;<br>                ],<br>                &quot;summary&quot;: &quot;Finds Pets by tags&quot;,<br>                &quot;description&quot;: &quot;Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.&quot;,<br>                &quot;operationId&quot;: &quot;findPetsByTags&quot;,<br>                &quot;produces&quot;: [<br>                    &quot;application/json&quot;,<br>                    &quot;application/xml&quot;<br>                ],<br>                &quot;parameters&quot;: [<br>                    {<br>                        &quot;name&quot;: &quot;tags&quot;,<br>                        &quot;in&quot;: &quot;query&quot;,<br>                        &quot;description&quot;: &quot;Tags to filter by&quot;,<br>                        &quot;required&quot;: true,<br>                        &quot;type&quot;: &quot;array&quot;,<br>                        &quot;items&quot;: {<br>                            &quot;type&quot;: &quot;string&quot;<br>                        },<br>                        &quot;collectionFormat&quot;: &quot;multi&quot;<br>                    }<br>                ],<br>                &quot;responses&quot;: {<br>                    &quot;200&quot;: {<br>                        &quot;description&quot;: &quot;successful operation&quot;,<br>                        &quot;schema&quot;: {<br>                            &quot;type&quot;: &quot;array&quot;,<br>                            &quot;items&quot;: {<br>                                &quot;$ref&quot;: &quot;#/definitions/Pet&quot;<br>                            }<br>                        }<br>                    },<br>                    &quot;400&quot;: {<br>                        &quot;description&quot;: &quot;Invalid tag value&quot;<br>                    }<br>                },<br>                &quot;security&quot;: [<br>                    {<br>                        &quot;petstore_auth&quot;: [<br>                            &quot;write:pets&quot;,<br>                            &quot;read:pets&quot;<br>                        ]<br>                    }<br>                ],<br>                &quot;deprecated&quot;: true<br>            }<br>        },<br>        &quot;/pet/{petId}&quot;: {<br>            &quot;get&quot;: {<br>                &quot;tags&quot;: [<br>                    &quot;pet&quot;<br>                ],<br>                &quot;summary&quot;: &quot;Find pet by ID&quot;,<br>                &quot;description&quot;: &quot;Returns a single pet&quot;,<br>                &quot;operationId&quot;: &quot;getPetById&quot;,<br>                &quot;produces&quot;: [<br>                    &quot;application/json&quot;,<br>                    &quot;application/xml&quot;<br>                ],<br>                &quot;parameters&quot;: [<br>                    {<br>                        &quot;name&quot;: &quot;petId&quot;,<br>                        &quot;in&quot;: &quot;path&quot;,<br>                        &quot;description&quot;: &quot;ID of pet to return&quot;,<br>                        &quot;required&quot;: true,<br>                        &quot;type&quot;: &quot;integer&quot;,<br>                        &quot;format&quot;: &quot;int64&quot;<br>                    }<br>                ],<br>                &quot;responses&quot;: {<br>                    &quot;200&quot;: {<br>                        &quot;description&quot;: &quot;successful operation&quot;,<br>                        &quot;schema&quot;: {<br>                            &quot;$ref&quot;: &quot;#/definitions/Pet&quot;<br>                        }<br>                    },<br>                    &quot;400&quot;: {<br>                        &quot;description&quot;: &quot;Invalid ID supplied&quot;<br>                    },<br>                    &quot;404&quot;: {<br>                        &quot;description&quot;: &quot;Pet not found&quot;<br>                    }<br>                },<br>                &quot;security&quot;: [<br>                    {<br>                        &quot;api_key&quot;: [<br>                            <br>                        ]<br>                    }<br>                ]<br>            },<br>            &quot;post&quot;: {<br>                &quot;tags&quot;: [<br>                    &quot;pet&quot;<br>                ],<br>                &quot;summary&quot;: &quot;Updates a pet in the store with form data&quot;,<br>                &quot;description&quot;: &quot;&quot;,<br>                &quot;operationId&quot;: &quot;updatePetWithForm&quot;,<br>                &quot;consumes&quot;: [<br>                    &quot;application/x-www-form-urlencoded&quot;<br>                ],<br>                &quot;produces&quot;: [<br>                    &quot;application/json&quot;,<br>                    &quot;application/xml&quot;<br>                ],<br>                &quot;parameters&quot;: [<br>                    {<br>                        &quot;name&quot;: &quot;petId&quot;,<br>                        &quot;in&quot;: &quot;path&quot;,<br>                        &quot;description&quot;: &quot;ID of pet that needs to be updated&quot;,<br>                        &quot;required&quot;: true,<br>                        &quot;type&quot;: &quot;integer&quot;,<br>                        &quot;format&quot;: &quot;int64&quot;<br>                    },<br>                    {<br>                        &quot;name&quot;: &quot;name&quot;,<br>                        &quot;in&quot;: &quot;formData&quot;,<br>                        &quot;description&quot;: &quot;Updated name of the pet&quot;,<br>                        &quot;required&quot;: false,<br>                        &quot;type&quot;: &quot;string&quot;<br>                    },<br>                    {<br>                        &quot;name&quot;: &quot;status&quot;,<br>                        &quot;in&quot;: &quot;formData&quot;,<br>                        &quot;description&quot;: &quot;Updated status of the pet&quot;,<br>                        &quot;required&quot;: false,<br>                        &quot;type&quot;: &quot;string&quot;<br>                    }<br>                ],<br>                &quot;responses&quot;: {<br>                    &quot;405&quot;: {<br>                        &quot;description&quot;: &quot;Invalid input&quot;<br>                    }<br>                },<br>                &quot;security&quot;: [<br>                    {<br>                        &quot;petstore_auth&quot;: [<br>                            &quot;write:pets&quot;,<br>                            &quot;read:pets&quot;<br>                        ]<br>                    }<br>                ]<br>            },<br>            &quot;delete&quot;: {<br>                &quot;tags&quot;: [<br>                    &quot;pet&quot;<br>                ],<br>                &quot;summary&quot;: &quot;Deletes a pet&quot;,<br>                &quot;description&quot;: &quot;&quot;,<br>                &quot;operationId&quot;: &quot;deletePet&quot;,<br>                &quot;produces&quot;: [<br>                    &quot;application/json&quot;,<br>                    &quot;application/xml&quot;<br>                ],<br>                &quot;parameters&quot;: [<br>                    {<br>                        &quot;name&quot;: &quot;api_key&quot;,<br>                        &quot;in&quot;: &quot;header&quot;,<br>                        &quot;required&quot;: false,<br>                        &quot;type&quot;: &quot;string&quot;<br>                    },<br>                    {<br>                        &quot;name&quot;: &quot;petId&quot;,<br>                        &quot;in&quot;: &quot;path&quot;,<br>                        &quot;description&quot;: &quot;Pet id to delete&quot;,<br>                        &quot;required&quot;: true,<br>                        &quot;type&quot;: &quot;integer&quot;,<br>                        &quot;format&quot;: &quot;int64&quot;<br>                    }<br>                ],<br>                &quot;responses&quot;: {<br>                    &quot;400&quot;: {<br>                        &quot;description&quot;: &quot;Invalid ID supplied&quot;<br>                    },<br>                    &quot;404&quot;: {<br>                        &quot;description&quot;: &quot;Pet not found&quot;<br>                    }<br>                },<br>                &quot;security&quot;: [<br>                    {<br>                        &quot;petstore_auth&quot;: [<br>                            &quot;write:pets&quot;,<br>                            &quot;read:pets&quot;<br>                        ]<br>                    }<br>                ]<br>            }<br>        },<br>        &quot;/store/order&quot;: {<br>            &quot;post&quot;: {<br>                &quot;tags&quot;: [<br>                    &quot;store&quot;<br>                ],<br>                &quot;summary&quot;: &quot;Place an order for a pet&quot;,<br>                &quot;description&quot;: &quot;&quot;,<br>                &quot;operationId&quot;: &quot;placeOrder&quot;,<br>                &quot;consumes&quot;: [<br>                    &quot;application/json&quot;<br>                ],<br>                &quot;produces&quot;: [<br>                    &quot;application/json&quot;,<br>                    &quot;application/xml&quot;<br>                ],<br>                &quot;parameters&quot;: [<br>                    {<br>                        &quot;in&quot;: &quot;body&quot;,<br>                        &quot;name&quot;: &quot;body&quot;,<br>                        &quot;description&quot;: &quot;order placed for purchasing the pet&quot;,<br>                        &quot;required&quot;: true,<br>                        &quot;schema&quot;: {<br>                            &quot;$ref&quot;: &quot;#/definitions/Order&quot;<br>                        }<br>                    }<br>                ],<br>                &quot;responses&quot;: {<br>                    &quot;200&quot;: {<br>                        &quot;description&quot;: &quot;successful operation&quot;,<br>                        &quot;schema&quot;: {<br>                            &quot;$ref&quot;: &quot;#/definitions/Order&quot;<br>                        }<br>                    },<br>                    &quot;400&quot;: {<br>                        &quot;description&quot;: &quot;Invalid Order&quot;<br>                    }<br>                }<br>            }<br>        },<br>        &quot;/store/order/{orderId}&quot;: {<br>            &quot;get&quot;: {<br>                &quot;tags&quot;: [<br>                    &quot;store&quot;<br>                ],<br>                &quot;summary&quot;: &quot;Find purchase order by ID&quot;,<br>                &quot;description&quot;: &quot;For valid response try integer IDs with value &gt;= 1 and &lt;= 10. Other values will generated exceptions&quot;,<br>                &quot;operationId&quot;: &quot;getOrderById&quot;,<br>                &quot;produces&quot;: [<br>                    &quot;application/json&quot;,<br>                    &quot;application/xml&quot;<br>                ],<br>                &quot;parameters&quot;: [<br>                    {<br>                        &quot;name&quot;: &quot;orderId&quot;,<br>                        &quot;in&quot;: &quot;path&quot;,<br>                        &quot;description&quot;: &quot;ID of pet that needs to be fetched&quot;,<br>                        &quot;required&quot;: true,<br>                        &quot;type&quot;: &quot;integer&quot;,<br>                        &quot;maximum&quot;: 10,<br>                        &quot;minimum&quot;: 1,<br>                        &quot;format&quot;: &quot;int64&quot;<br>                    }<br>                ],<br>                &quot;responses&quot;: {<br>                    &quot;200&quot;: {<br>                        &quot;description&quot;: &quot;successful operation&quot;,<br>                        &quot;schema&quot;: {<br>                            &quot;$ref&quot;: &quot;#/definitions/Order&quot;<br>                        }<br>                    },<br>                    &quot;400&quot;: {<br>                        &quot;description&quot;: &quot;Invalid ID supplied&quot;<br>                    },<br>                    &quot;404&quot;: {<br>                        &quot;description&quot;: &quot;Order not found&quot;<br>                    }<br>                }<br>            },<br>            &quot;delete&quot;: {<br>                &quot;tags&quot;: [<br>                    &quot;store&quot;<br>                ],<br>                &quot;summary&quot;: &quot;Delete purchase order by ID&quot;,<br>                &quot;description&quot;: &quot;For valid response try integer IDs with positive integer value. Negative or non-integer values will generate API errors&quot;,<br>                &quot;operationId&quot;: &quot;deleteOrder&quot;,<br>                &quot;produces&quot;: [<br>                    &quot;application/json&quot;,<br>                    &quot;application/xml&quot;<br>                ],<br>                &quot;parameters&quot;: [<br>                    {<br>                        &quot;name&quot;: &quot;orderId&quot;,<br>                        &quot;in&quot;: &quot;path&quot;,<br>                        &quot;description&quot;: &quot;ID of the order that needs to be deleted&quot;,<br>                        &quot;required&quot;: true,<br>                        &quot;type&quot;: &quot;integer&quot;,<br>                        &quot;minimum&quot;: 1,<br>                        &quot;format&quot;: &quot;int64&quot;<br>                    }<br>                ],<br>                &quot;responses&quot;: {<br>                    &quot;400&quot;: {<br>                        &quot;description&quot;: &quot;Invalid ID supplied&quot;<br>                    },<br>                    &quot;404&quot;: {<br>                        &quot;description&quot;: &quot;Order not found&quot;<br>                    }<br>                }<br>            }<br>        },<br>        &quot;/store/inventory&quot;: {<br>            &quot;get&quot;: {<br>                &quot;tags&quot;: [<br>                    &quot;store&quot;<br>                ],<br>                &quot;summary&quot;: &quot;Returns pet inventories by status&quot;,<br>                &quot;description&quot;: &quot;Returns a map of status codes to quantities&quot;,<br>                &quot;operationId&quot;: &quot;getInventory&quot;,<br>                &quot;produces&quot;: [<br>                    &quot;application/json&quot;<br>                ],<br>                &quot;parameters&quot;: [<br>                    <br>                ],<br>                &quot;responses&quot;: {<br>                    &quot;200&quot;: {<br>                        &quot;description&quot;: &quot;successful operation&quot;,<br>                        &quot;schema&quot;: {<br>                            &quot;type&quot;: &quot;object&quot;,<br>                            &quot;additionalProperties&quot;: {<br>                                &quot;type&quot;: &quot;integer&quot;,<br>                                &quot;format&quot;: &quot;int32&quot;<br>                            }<br>                        }<br>                    }<br>                },<br>                &quot;security&quot;: [<br>                    {<br>                        &quot;api_key&quot;: [<br>                            <br>                        ]<br>                    }<br>                ]<br>            }<br>        },<br>        &quot;/user/createWithArray&quot;: {<br>            &quot;post&quot;: {<br>                &quot;tags&quot;: [<br>                    &quot;user&quot;<br>                ],<br>                &quot;summary&quot;: &quot;Creates list of users with given input array&quot;,<br>                &quot;description&quot;: &quot;&quot;,<br>                &quot;operationId&quot;: &quot;createUsersWithArrayInput&quot;,<br>                &quot;consumes&quot;: [<br>                    &quot;application/json&quot;<br>                ],<br>                &quot;produces&quot;: [<br>                    &quot;application/json&quot;,<br>                    &quot;application/xml&quot;<br>                ],<br>                &quot;parameters&quot;: [<br>                    {<br>                        &quot;in&quot;: &quot;body&quot;,<br>                        &quot;name&quot;: &quot;body&quot;,<br>                        &quot;description&quot;: &quot;List of user object&quot;,<br>                        &quot;required&quot;: true,<br>                        &quot;schema&quot;: {<br>                            &quot;type&quot;: &quot;array&quot;,<br>                            &quot;items&quot;: {<br>                                &quot;$ref&quot;: &quot;#/definitions/User&quot;<br>                            }<br>                        }<br>                    }<br>                ],<br>                &quot;responses&quot;: {<br>                    &quot;default&quot;: {<br>                        &quot;description&quot;: &quot;successful operation&quot;<br>                    }<br>                }<br>            }<br>        },<br>        &quot;/user/createWithList&quot;: {<br>            &quot;post&quot;: {<br>                &quot;tags&quot;: [<br>                    &quot;user&quot;<br>                ],<br>                &quot;summary&quot;: &quot;Creates list of users with given input array&quot;,<br>                &quot;description&quot;: &quot;&quot;,<br>                &quot;operationId&quot;: &quot;createUsersWithListInput&quot;,<br>                &quot;consumes&quot;: [<br>                    &quot;application/json&quot;<br>                ],<br>                &quot;produces&quot;: [<br>                    &quot;application/json&quot;,<br>                    &quot;application/xml&quot;<br>                ],<br>                &quot;parameters&quot;: [<br>                    {<br>                        &quot;in&quot;: &quot;body&quot;,<br>                        &quot;name&quot;: &quot;body&quot;,<br>                        &quot;description&quot;: &quot;List of user object&quot;,<br>                        &quot;required&quot;: true,<br>                        &quot;schema&quot;: {<br>                            &quot;type&quot;: &quot;array&quot;,<br>                            &quot;items&quot;: {<br>                                &quot;$ref&quot;: &quot;#/definitions/User&quot;<br>                            }<br>                        }<br>                    }<br>                ],<br>                &quot;responses&quot;: {<br>                    &quot;default&quot;: {<br>                        &quot;description&quot;: &quot;successful operation&quot;<br>                    }<br>                }<br>            }<br>        },<br>        &quot;/user/{username}&quot;: {<br>            &quot;get&quot;: {<br>                &quot;tags&quot;: [<br>                    &quot;user&quot;<br>                ],<br>                &quot;summary&quot;: &quot;Get user by user name&quot;,<br>                &quot;description&quot;: &quot;&quot;,<br>                &quot;operationId&quot;: &quot;getUserByName&quot;,<br>                &quot;produces&quot;: [<br>                    &quot;application/json&quot;,<br>                    &quot;application/xml&quot;<br>                ],<br>                &quot;parameters&quot;: [<br>                    {<br>                        &quot;name&quot;: &quot;username&quot;,<br>                        &quot;in&quot;: &quot;path&quot;,<br>                        &quot;description&quot;: &quot;The name that needs to be fetched. Use user1 for testing. &quot;,<br>                        &quot;required&quot;: true,<br>                        &quot;type&quot;: &quot;string&quot;<br>                    }<br>                ],<br>                &quot;responses&quot;: {<br>                    &quot;200&quot;: {<br>                        &quot;description&quot;: &quot;successful operation&quot;,<br>                        &quot;schema&quot;: {<br>                            &quot;$ref&quot;: &quot;#/definitions/User&quot;<br>                        }<br>                    },<br>                    &quot;400&quot;: {<br>                        &quot;description&quot;: &quot;Invalid username supplied&quot;<br>                    },<br>                    &quot;404&quot;: {<br>                        &quot;description&quot;: &quot;User not found&quot;<br>                    }<br>                }<br>            },<br>            &quot;put&quot;: {<br>                &quot;tags&quot;: [<br>                    &quot;user&quot;<br>                ],<br>                &quot;summary&quot;: &quot;Updated user&quot;,<br>                &quot;description&quot;: &quot;This can only be done by the logged in user.&quot;,<br>                &quot;operationId&quot;: &quot;updateUser&quot;,<br>                &quot;consumes&quot;: [<br>                    &quot;application/json&quot;<br>                ],<br>                &quot;produces&quot;: [<br>                    &quot;application/json&quot;,<br>                    &quot;application/xml&quot;<br>                ],<br>                &quot;parameters&quot;: [<br>                    {<br>                        &quot;name&quot;: &quot;username&quot;,<br>                        &quot;in&quot;: &quot;path&quot;,<br>                        &quot;description&quot;: &quot;name that need to be updated&quot;,<br>                        &quot;required&quot;: true,<br>                        &quot;type&quot;: &quot;string&quot;<br>                    },<br>                    {<br>                        &quot;in&quot;: &quot;body&quot;,<br>                        &quot;name&quot;: &quot;body&quot;,<br>                        &quot;description&quot;: &quot;Updated user object&quot;,<br>                        &quot;required&quot;: true,<br>                        &quot;schema&quot;: {<br>                            &quot;$ref&quot;: &quot;#/definitions/User&quot;<br>                        }<br>                    }<br>                ],<br>                &quot;responses&quot;: {<br>                    &quot;400&quot;: {<br>                        &quot;description&quot;: &quot;Invalid user supplied&quot;<br>                    },<br>                    &quot;404&quot;: {<br>                        &quot;description&quot;: &quot;User not found&quot;<br>                    }<br>                }<br>            },<br>            &quot;delete&quot;: {<br>                &quot;tags&quot;: [<br>                    &quot;user&quot;<br>                ],<br>                &quot;summary&quot;: &quot;Delete user&quot;,<br>                &quot;description&quot;: &quot;This can only be done by the logged in user.&quot;,<br>                &quot;operationId&quot;: &quot;deleteUser&quot;,<br>                &quot;produces&quot;: [<br>                    &quot;application/json&quot;,<br>                    &quot;application/xml&quot;<br>                ],<br>                &quot;parameters&quot;: [<br>                    {<br>                        &quot;name&quot;: &quot;username&quot;,<br>                        &quot;in&quot;: &quot;path&quot;,<br>                        &quot;description&quot;: &quot;The name that needs to be deleted&quot;,<br>                        &quot;required&quot;: true,<br>                        &quot;type&quot;: &quot;string&quot;<br>                    }<br>                ],<br>                &quot;responses&quot;: {<br>                    &quot;400&quot;: {<br>                        &quot;description&quot;: &quot;Invalid username supplied&quot;<br>                    },<br>                    &quot;404&quot;: {<br>                        &quot;description&quot;: &quot;User not found&quot;<br>                    }<br>                }<br>            }<br>        },<br>        &quot;/user/login&quot;: {<br>            &quot;get&quot;: {<br>                &quot;tags&quot;: [<br>                    &quot;user&quot;<br>                ],<br>                &quot;summary&quot;: &quot;Logs user into the system&quot;,<br>                &quot;description&quot;: &quot;&quot;,<br>                &quot;operationId&quot;: &quot;loginUser&quot;,<br>                &quot;produces&quot;: [<br>                    &quot;application/json&quot;,<br>                    &quot;application/xml&quot;<br>                ],<br>                &quot;parameters&quot;: [<br>                    {<br>                        &quot;name&quot;: &quot;username&quot;,<br>                        &quot;in&quot;: &quot;query&quot;,<br>                        &quot;description&quot;: &quot;The user name for login&quot;,<br>                        &quot;required&quot;: true,<br>                        &quot;type&quot;: &quot;string&quot;<br>                    },<br>                    {<br>                        &quot;name&quot;: &quot;password&quot;,<br>                        &quot;in&quot;: &quot;query&quot;,<br>                        &quot;description&quot;: &quot;The password for login in clear text&quot;,<br>                        &quot;required&quot;: true,<br>                        &quot;type&quot;: &quot;string&quot;<br>                    }<br>                ],<br>                &quot;responses&quot;: {<br>                    &quot;200&quot;: {<br>                        &quot;description&quot;: &quot;successful operation&quot;,<br>                        &quot;headers&quot;: {<br>                            &quot;X-Expires-After&quot;: {<br>                                &quot;type&quot;: &quot;string&quot;,<br>                                &quot;format&quot;: &quot;date-time&quot;,<br>                                &quot;description&quot;: &quot;date in UTC when token expires&quot;<br>                            },<br>                            &quot;X-Rate-Limit&quot;: {<br>                                &quot;type&quot;: &quot;integer&quot;,<br>                                &quot;format&quot;: &quot;int32&quot;,<br>                                &quot;description&quot;: &quot;calls per hour allowed by the user&quot;<br>                            }<br>                        },<br>                        &quot;schema&quot;: {<br>                            &quot;type&quot;: &quot;string&quot;<br>                        }<br>                    },<br>                    &quot;400&quot;: {<br>                        &quot;description&quot;: &quot;Invalid username/password supplied&quot;<br>                    }<br>                }<br>            }<br>        },<br>        &quot;/user/logout&quot;: {<br>            &quot;get&quot;: {<br>                &quot;tags&quot;: [<br>                    &quot;user&quot;<br>                ],<br>                &quot;summary&quot;: &quot;Logs out current logged in user session&quot;,<br>                &quot;description&quot;: &quot;&quot;,<br>                &quot;operationId&quot;: &quot;logoutUser&quot;,<br>                &quot;produces&quot;: [<br>                    &quot;application/json&quot;,<br>                    &quot;application/xml&quot;<br>                ],<br>                &quot;parameters&quot;: [<br>                    <br>                ],<br>                &quot;responses&quot;: {<br>                    &quot;default&quot;: {<br>                        &quot;description&quot;: &quot;successful operation&quot;<br>                    }<br>                }<br>            }<br>        },<br>        &quot;/user&quot;: {<br>            &quot;post&quot;: {<br>                &quot;tags&quot;: [<br>                    &quot;user&quot;<br>                ],<br>                &quot;summary&quot;: &quot;Create user&quot;,<br>                &quot;description&quot;: &quot;This can only be done by the logged in user.&quot;,<br>                &quot;operationId&quot;: &quot;createUser&quot;,<br>                &quot;consumes&quot;: [<br>                    &quot;application/json&quot;<br>                ],<br>                &quot;produces&quot;: [<br>                    &quot;application/json&quot;,<br>                    &quot;application/xml&quot;<br>                ],<br>                &quot;parameters&quot;: [<br>                    {<br>                        &quot;in&quot;: &quot;body&quot;,<br>                        &quot;name&quot;: &quot;body&quot;,<br>                        &quot;description&quot;: &quot;Created user object&quot;,<br>                        &quot;required&quot;: true,<br>                        &quot;schema&quot;: {<br>                            &quot;$ref&quot;: &quot;#/definitions/User&quot;<br>                        }<br>                    }<br>                ],<br>                &quot;responses&quot;: {<br>                    &quot;default&quot;: {<br>                        &quot;description&quot;: &quot;successful operation&quot;<br>                    }<br>                }<br>            }<br>        }<br>    },<br>    &quot;securityDefinitions&quot;: {<br>        &quot;api_key&quot;: {<br>            &quot;type&quot;: &quot;apiKey&quot;,<br>            &quot;name&quot;: &quot;api_key&quot;,<br>            &quot;in&quot;: &quot;header&quot;<br>        },<br>        &quot;petstore_auth&quot;: {<br>            &quot;type&quot;: &quot;oauth2&quot;,<br>            &quot;authorizationUrl&quot;: &quot;https://petstore.swagger.io/oauth/authorize&quot;,<br>            &quot;flow&quot;: &quot;implicit&quot;,<br>            &quot;scopes&quot;: {<br>                &quot;read:pets&quot;: &quot;read your pets&quot;,<br>                &quot;write:pets&quot;: &quot;modify pets in your account&quot;<br>            }<br>        }<br>    },<br>    &quot;definitions&quot;: {<br>        &quot;ApiResponse&quot;: {<br>            &quot;type&quot;: &quot;object&quot;,<br>            &quot;properties&quot;: {<br>                &quot;code&quot;: {<br>                    &quot;type&quot;: &quot;integer&quot;,<br>                    &quot;format&quot;: &quot;int32&quot;<br>                },<br>                &quot;type&quot;: {<br>                    &quot;type&quot;: &quot;string&quot;<br>                },<br>                &quot;message&quot;: {<br>                    &quot;type&quot;: &quot;string&quot;<br>                }<br>            }<br>        },<br>        &quot;Category&quot;: {<br>            &quot;type&quot;: &quot;object&quot;,<br>            &quot;properties&quot;: {<br>                &quot;id&quot;: {<br>                    &quot;type&quot;: &quot;integer&quot;,<br>                    &quot;format&quot;: &quot;int64&quot;<br>                },<br>                &quot;name&quot;: {<br>                    &quot;type&quot;: &quot;string&quot;<br>                }<br>            },<br>            &quot;xml&quot;: {<br>                &quot;name&quot;: &quot;Category&quot;<br>            }<br>        },<br>        &quot;Pet&quot;: {<br>            &quot;type&quot;: &quot;object&quot;,<br>            &quot;required&quot;: [<br>                &quot;name&quot;,<br>                &quot;photoUrls&quot;<br>            ],<br>            &quot;properties&quot;: {<br>                &quot;id&quot;: {<br>                    &quot;type&quot;: &quot;integer&quot;,<br>                    &quot;format&quot;: &quot;int64&quot;<br>                },<br>                &quot;category&quot;: {<br>                    &quot;$ref&quot;: &quot;#/definitions/Category&quot;<br>                },<br>                &quot;name&quot;: {<br>                    &quot;type&quot;: &quot;string&quot;,<br>                    &quot;example&quot;: &quot;doggie&quot;<br>                },<br>                &quot;photoUrls&quot;: {<br>                    &quot;type&quot;: &quot;array&quot;,<br>                    &quot;xml&quot;: {<br>                        &quot;wrapped&quot;: true<br>                    },<br>                    &quot;items&quot;: {<br>                        &quot;type&quot;: &quot;string&quot;,<br>                        &quot;xml&quot;: {<br>                            &quot;name&quot;: &quot;photoUrl&quot;<br>                        }<br>                    }<br>                },<br>                &quot;tags&quot;: {<br>                    &quot;type&quot;: &quot;array&quot;,<br>                    &quot;xml&quot;: {<br>                        &quot;wrapped&quot;: true<br>                    },<br>                    &quot;items&quot;: {<br>                        &quot;xml&quot;: {<br>                            &quot;name&quot;: &quot;tag&quot;<br>                        },<br>                        &quot;$ref&quot;: &quot;#/definitions/Tag&quot;<br>                    }<br>                },<br>                &quot;status&quot;: {<br>                    &quot;type&quot;: &quot;string&quot;,<br>                    &quot;description&quot;: &quot;pet status in the store&quot;,<br>                    &quot;enum&quot;: [<br>                        &quot;available&quot;,<br>                        &quot;pending&quot;,<br>                        &quot;sold&quot;<br>                    ]<br>                }<br>            },<br>            &quot;xml&quot;: {<br>                &quot;name&quot;: &quot;Pet&quot;<br>            }<br>        },<br>        &quot;Tag&quot;: {<br>            &quot;type&quot;: &quot;object&quot;,<br>            &quot;properties&quot;: {<br>                &quot;id&quot;: {<br>                    &quot;type&quot;: &quot;integer&quot;,<br>                    &quot;format&quot;: &quot;int64&quot;<br>                },<br>                &quot;name&quot;: {<br>                    &quot;type&quot;: &quot;string&quot;<br>                }<br>            },<br>            &quot;xml&quot;: {<br>                &quot;name&quot;: &quot;Tag&quot;<br>            }<br>        },<br>        &quot;Order&quot;: {<br>            &quot;type&quot;: &quot;object&quot;,<br>            &quot;properties&quot;: {<br>                &quot;id&quot;: {<br>                    &quot;type&quot;: &quot;integer&quot;,<br>                    &quot;format&quot;: &quot;int64&quot;<br>                },<br>                &quot;petId&quot;: {<br>                    &quot;type&quot;: &quot;integer&quot;,<br>                    &quot;format&quot;: &quot;int64&quot;<br>                },<br>                &quot;quantity&quot;: {<br>                    &quot;type&quot;: &quot;integer&quot;,<br>                    &quot;format&quot;: &quot;int32&quot;<br>                },<br>                &quot;shipDate&quot;: {<br>                    &quot;type&quot;: &quot;string&quot;,<br>                    &quot;format&quot;: &quot;date-time&quot;<br>                },<br>                &quot;status&quot;: {<br>                    &quot;type&quot;: &quot;string&quot;,<br>                    &quot;description&quot;: &quot;Order Status&quot;,<br>                    &quot;enum&quot;: [<br>                        &quot;placed&quot;,<br>                        &quot;approved&quot;,<br>                        &quot;delivered&quot;<br>                    ]<br>                },<br>                &quot;complete&quot;: {<br>                    &quot;type&quot;: &quot;boolean&quot;<br>                }<br>            },<br>            &quot;xml&quot;: {<br>                &quot;name&quot;: &quot;Order&quot;<br>            }<br>        },<br>        &quot;User&quot;: {<br>            &quot;type&quot;: &quot;object&quot;,<br>            &quot;properties&quot;: {<br>                &quot;id&quot;: {<br>                    &quot;type&quot;: &quot;integer&quot;,<br>                    &quot;format&quot;: &quot;int64&quot;<br>                },<br>                &quot;username&quot;: {<br>                    &quot;type&quot;: &quot;string&quot;<br>                },<br>                &quot;firstName&quot;: {<br>                    &quot;type&quot;: &quot;string&quot;<br>                },<br>                &quot;lastName&quot;: {<br>                    &quot;type&quot;: &quot;string&quot;<br>                },<br>                &quot;email&quot;: {<br>                    &quot;type&quot;: &quot;string&quot;<br>                },<br>                &quot;password&quot;: {<br>                    &quot;type&quot;: &quot;string&quot;<br>                },<br>                &quot;phone&quot;: {<br>                    &quot;type&quot;: &quot;string&quot;<br>                },<br>                &quot;userStatus&quot;: {<br>                    &quot;type&quot;: &quot;integer&quot;,<br>                    &quot;format&quot;: &quot;int32&quot;,<br>                    &quot;description&quot;: &quot;User Status&quot;<br>                }<br>            },<br>            &quot;xml&quot;: {<br>                &quot;name&quot;: &quot;User&quot;<br>            }<br>        }<br>    },<br>    &quot;externalDocs&quot;: {<br>        &quot;description&quot;: &quot;Find out more about Swagger&quot;,<br>        &quot;url&quot;: &quot;http://swagger.io&quot;<br>    }<br>}</pre>
+                                    <h4>Response Cookies</h4>
+                                    <pre></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                        </span>
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step"></span></td>
+                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="70" class="step-icon">
+                        <a name="0-1"></a>
+                            <span style="margin-left: 40px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                all the services of the pet store are available
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">047ms</span></td>
+                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="50" class="step-icon">
+                        <a name="1"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection1')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection1 success-icon"
+                                   style="margin-left: 20px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection1')"
+                               style="display:block;">
+                                <span class="top-level-step">
+                                                When submit the data of a valid user to the Create User method
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="top-level-step">SUCCESS</span></td>
+                    <td width="100"><span class="top-level-step">1s 007ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection1" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="70" class="step-icon">
+                        <a name="1-0"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection1-0')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection1-0 success-icon"
+                                   style="margin-left: 40px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection1-0')"
+                               style="display:block;">
+                                <span class="nested-step">
+                                                Regular user executes a GET on the resource /user/login?username={username}&password={password}
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-step">509ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection1-0" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="90" class="step-icon">
+                        <a name="1-0-0"></a>
+                            <span style="margin-left: 60px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                GET https://petstore.swagger.io/v2/user/login?username=Arcia&amp;password=123456
+                                        </span>
+                            <span class="evidence">
+                                        <span class="piece-of-evidence">
+                <span>
+                        <button type="button" class="btn btn-success btn-sm" data-toggle="collapse"
+                                data-target="#restModal-REST-7">
+                            REST Query
+                        </button>
+                    </span>
+                <!-- Modal -->
+                <div class="rest-query-details">
+                    <div class="collapse multi-collapse" id="restModal-REST-7">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4>Response</h4>
+                                    <p>URL: https://petstore.swagger.io/v2/user/login?username=Arcia&password=123456</p>
+                                    <p>Status code: 200</p>
+                                    <p>Content Type: application/json</p>
+                                    <h4>Request Headers</h4>
+                                    <pre>Accept=*/*<br>Content-Type=application/json</pre>
+                                    <h4>Response Headers</h4>
+                                    <pre>Date: Fri, 02 Feb 2024 05:59:49 GMT<br>Content-Type: application/json<br>Transfer-Encoding: chunked<br>Connection: keep-alive<br>Access-Control-Allow-Origin: *<br>Access-Control-Allow-Methods: GET, POST, DELETE, PUT<br>Access-Control-Allow-Headers: Content-Type, api_key, Authorization<br>X-Expires-After: Fri Feb 02 06:59:49 UTC 2024<br>X-Rate-Limit: 5000<br>Server: Jetty(9.2.9.v20150224)</pre>
+                                <h4>Response Body</h4>
+                                    <pre>{<br>    &quot;code&quot;: 200,<br>    &quot;type&quot;: &quot;unknown&quot;,<br>    &quot;message&quot;: &quot;logged in user session:1706853589243&quot;<br>}</pre>
+                                    <h4>Response Cookies</h4>
+                                    <pre></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                        </span>
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step"></span></td>
+                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="70" class="step-icon">
+                        <a name="1-1"></a>
+                            <span style="margin-left: 40px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                the login was successful with a valid username and password
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">006ms</span></td>
+                </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="70" class="step-icon">
+                        <a name="1-2"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection1-2')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection1-2 success-icon"
+                                   style="margin-left: 40px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection1-2')"
+                               style="display:block;">
+                                <span class="nested-step">
+                                                Regular user executes a POST on the resource /user
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-step">433ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection1-2" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="90" class="step-icon">
+                        <a name="1-2-0"></a>
+                            <span style="margin-left: 60px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                POST https://petstore.swagger.io/v2/user
+                                        </span>
+                            <span class="evidence">
+                                        <span class="piece-of-evidence">
+                <span>
+                        <button type="button" class="btn btn-success btn-sm" data-toggle="collapse"
+                                data-target="#restModal-REST-10">
+                            REST Query
+                        </button>
+                    </span>
+                <!-- Modal -->
+                <div class="rest-query-details">
+                    <div class="collapse multi-collapse" id="restModal-REST-10">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4>Response</h4>
+                                    <p>URL: https://petstore.swagger.io/v2/user</p>
+                                    <p>Status code: 200</p>
+                                    <p>Content Type: application/json</p>
+                                    <h4>Request Headers</h4>
+                                    <pre>Accept=*/*<br>Content-Type=application/json</pre>
+                                    <h4>Content Body</h4>
+                                    <pre>{<br>    &quot;id&quot;: 552211,<br>    &quot;username&quot;: &quot;Nekros&quot;,<br>    &quot;firstName&quot;: &quot;Luis&quot;,<br>    &quot;lastName&quot;: &quot;Arcia&quot;,<br>    &quot;email&quot;: &quot;larcia@arcia.com&quot;,<br>    &quot;password&quot;: &quot;123789&quot;,<br>    &quot;phone&quot;: &quot;32165478&quot;,<br>    &quot;userStatus&quot;: 0<br>}</pre>
+                                    <h4>Response Headers</h4>
+                                    <pre>Date: Fri, 02 Feb 2024 05:59:49 GMT<br>Content-Type: application/json<br>Transfer-Encoding: chunked<br>Connection: keep-alive<br>Access-Control-Allow-Origin: *<br>Access-Control-Allow-Methods: GET, POST, DELETE, PUT<br>Access-Control-Allow-Headers: Content-Type, api_key, Authorization<br>Server: Jetty(9.2.9.v20150224)</pre>
+                                <h4>Response Body</h4>
+                                    <pre>{<br>    &quot;code&quot;: 200,<br>    &quot;type&quot;: &quot;unknown&quot;,<br>    &quot;message&quot;: &quot;552211&quot;<br>}</pre>
+                                    <h4>Response Cookies</h4>
+                                    <pre></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                        </span>
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step"></span></td>
+                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="50" class="step-icon">
+                        <a name="2"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection2')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection2 success-icon"
+                                   style="margin-left: 20px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection2')"
+                               style="display:block;">
+                                <span class="top-level-step">
+                                                Then validate the response from the user creation service
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="top-level-step">SUCCESS</span></td>
+                    <td width="100"><span class="top-level-step">020ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection2" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="70" class="step-icon">
+                        <a name="2-0"></a>
+                            <span style="margin-left: 40px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Status code 200 in the response from the user creation service
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">006ms</span></td>
+                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+            <tr class="test-SUCCESS">
+                    <td colspan="2"></td>
+                <td width="130"><span class="top-level-step"><em>SUCCESS</em></span></td>
+                <td width="100"><span class="top-level-step"><em>4.73s</em></span></td>
+            </tr>
+
+        </table>
+    </div>
+</div>
+
+<div id="beforefooter"></div>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <span class="version">Serenity BDD version 3.7.1</span>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function toggleDiv(divId) {
+        $("#" + divId).toggle();
+        var $icon = $(".img" + divId);
+        $icon.toggleClass("bi-caret-right-square");
+        $icon.toggleClass("bi-caret-down-square");
+    }
+</script>
+
+
+<script type="text/javascript">
+    //<![CDATA[
+
+    $(document).ready(function () {
+        $('img.screenshot').imgPreview({
+            imgCSS: {
+                width: '500px'
+            },
+            distanceFromCursor: {top: 10, left: -200}
+        });
+    });
+
+    //]]>
+</script>
+<div id="imgPreviewContainer" style="position: absolute; top: 612px; left: 355px; display: none; " class=""><img
+            src="" style="display: none; "></div>
+<div id="imgPreviewContainer2" style="position: absolute; top: 925px; left: 320px; display: none; " class="">
+    <img style="width: 200px; display: none; " src=""></div>
+<div id="imgPreviewWithStyles" style="position: absolute; top: 1272px; left: 321px; display: none; " class="">
+    <img style="height: 200px; opacity: 1; display: none; " src=""></div>
+<div id="imgPreviewWithStyles2" style="display: none; position: absolute; "><img style="height: 200px; "></div>
+<div id="imgPreviewWithStyles3" style="display: none; position: absolute; "><img style="height: 200px; "></div>
+
+</div>
+</body>
+</html>
