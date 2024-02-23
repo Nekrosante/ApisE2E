@@ -15,11 +15,6 @@ public class GetFindUser implements Task {
         actor.attemptsTo(
                 Get.resource("/user/{username}").with(request -> request.pathParam("username", username))
         );
-        actor.should(
-                seeThatResponse("Status code 200 in the response from the user search method",
-                        response -> response.statusCode(200)
-                )
-        );
     }
     public static GetFindUser with() {return Tasks.instrumented(GetFindUser.class);}
     public GetFindUser username (String username) {

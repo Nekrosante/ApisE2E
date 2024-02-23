@@ -1,2 +1,5 @@
 "Story","Title","Result","Date","Stability","Duration (s)"
-"Verify the operation of the pet store's services","Verify the user search method of the pet store","FAILURE","2024-02-02T00:25:12.3910242-05:00[America/Bogota]","0.0","1.45"
+"Verify the operation of the pet store's services","Verify the creation of a user in the pet store","ERROR","2024-02-22T17:15:21.934323-05:00[America/Bogota]","0.0","0.6"
+"Verify the operation of the pet store's services","Verify the user search method of the pet store","ERROR","2024-02-22T17:15:22.6348243-05:00[America/Bogota]","0.0","0.04"
+"Verify the operation of the pet store's services","Verify the method that updates user information in the pet store","ERROR","2024-02-22T17:15:22.6913231-05:00[America/Bogota]","0.0","0.04"
+"Verify the operation of the pet store's services","Verify the deletion of a previously created user","ERROR","2024-02-22T17:15:22.7463253-05:00[America/Bogota]","0.0","0.04"

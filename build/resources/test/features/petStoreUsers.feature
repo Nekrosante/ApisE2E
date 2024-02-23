@@ -23,7 +23,7 @@ Feature:  Verify the operation of the pet store's services
       When execute the user update method with valid data
       Then validate the user update using the search method
 
-    @CP003 @DeleteUser
+    @CP004 @DeleteUser
     Scenario: Verify the deletion of a previously created user
       When create a new user using the corresponding method
       And delete the user from the pet store

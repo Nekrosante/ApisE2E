@@ -10,10 +10,6 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
 import net.serenitybdd.screenplay.rest.abilities.CallAnApi;
-import net.serenitybdd.screenplay.rest.interactions.Delete;
-import net.serenitybdd.screenplay.rest.interactions.Get;
-import net.serenitybdd.screenplay.rest.interactions.Post;
-import net.serenitybdd.screenplay.rest.interactions.Put;
 import net.thucydides.core.util.EnvironmentVariables;
 import reto.ApisE2E.interactions.CheckHealth;
 import reto.ApisE2E.tasks.*;
@@ -35,11 +31,11 @@ public class StepsPetStoreUsers {
     }
     @Given("that the services of the pet store are available")
     public void thatTheServicesOfThePetStoreAreAvailable() {
-        OnStage.theActorInTheSpotlight()
-                .wasAbleTo(
+        actor.attemptsTo(
                         CheckHealth.petStore()
                 );
     }
+
     @When("submit the data of a valid user to the Create User method")
     public void submitTheDataOfAValidUserToTheMethod() {
         actor.attemptsTo(
@@ -113,7 +109,8 @@ public class StepsPetStoreUsers {
     @Then("verify with the search method that the user is deleted")
     public void verifyWithTheSearchMethodThatTheUserIsDeleted() {
         actor.attemptsTo(
-                Get.resource("/user/{username}").with(request -> request.pathParam("username", "Batman"))
+                GetFindUser.with()
+                        .username("Batman")
         );
         actor.should(
                 seeThatResponse("The search method did not find the deleted user",
